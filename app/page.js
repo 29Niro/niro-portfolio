@@ -19,7 +19,7 @@ const Home = () => {
               <span className="text-accent">Niroshan</span>
             </h1>
             <p className="max-w-[500px] mb-9 text-white/80">
-              I'm a software engineer based in Sri Lanka. I specialize in
+              I&apos;m a software engineer based in Sri Lanka. I specialize in
               building exceptional digital experiences and I am proficient in
               various programming languages and frameworks.
             </p>
