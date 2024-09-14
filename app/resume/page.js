@@ -7,8 +7,19 @@ import {
   FaReact,
   FaNodeJs,
   FaFigma,
+  FaJava,
+  FaPython,
+  FaAws
 } from 'react-icons/fa';
-import { SiTailwindcss, SiNextdotjs } from 'react-icons/si';
+import {
+  SiTailwindcss,
+  SiNextdotjs,
+  SiFlutter,
+  SiSpringboot,
+  SiC,
+  SiCsharp,
+  SiDotnet
+} from 'react-icons/si';
 
 const about = {
   title: 'About Me',
@@ -18,7 +29,7 @@ const about = {
     { fieldName: 'Name', fieldValue: 'Niroshan Pushparaj' },
     { fieldName: 'Phone', fieldValue: '(+94) 775 139 934' },
     { fieldName: 'Experience', fieldValue: '2+ Years' },
-    { fieldName: 'Nationality', fieldValue: 'Srilankan' },
+    { fieldName: 'Nationality', fieldValue: 'Sri Lankan' },
     { fieldName: 'Email', fieldValue: '29niro@gmail.com' },
     { fieldName: 'Freelance', fieldValue: 'Available' },
     { fieldName: 'Languages', fieldValue: 'Tamil, English' },
@@ -66,11 +77,11 @@ const education = {
   icon: FaHtml5,
   title: 'My Education',
   description:
-    'I have worked on a variety of projects, ranging from small business websites to large-scale web applications. I have experience in both front-end and back-end development, and I am comfortable working with modern frameworks and libraries. I am always looking to expand my skill set and take on new challenges.',
-  jobs: [
+    'I hold a degree in "BSc (Hons) in Software Engineering" from University of Kelaniya, where I gained a strong foundation in software engineering principles and hands-on experience in developing innovative applications. My academic journey equipped me with technical expertise in full-stack development, mobile applications, and cloud-based solutions, all of which I apply in my professional projects.',
+  schools: [
     {
       institution: 'University of Kelaniya',
-      degree: 'Bachelor of Science in Software Engineering',
+      degree: 'BSc (Hons) in Software Engineering',
       duration: 'Feb 2020 - Apr 2024',
     },
     {
@@ -86,14 +97,21 @@ const skills = {
   description:
     'I have experience working with a variety of technologies and tools. Here are some of the key skills that I bring to the table:',
   skillList: [
-    { name: 'HTML', icon: FaHtml5 },
-    { name: 'CSS', icon: FaCss3 },
-    { name: 'JavaScript', icon: FaJs },
-    { name: 'React', icon: FaReact },
-    { name: 'Node.js', icon: FaNodeJs },
-    { name: 'Tailwind CSS', icon: SiTailwindcss },
-    { name: 'Next.js', icon: SiNextdotjs },
-    { name: 'Figma', icon: FaFigma },
+    { name: 'HTML', icon: <FaHtml5 /> },
+    { name: 'CSS', icon: <FaCss3 /> },
+    { name: 'JavaScript', icon: <FaJs /> },
+    { name: 'React JS', icon: <FaReact /> },
+    { name: 'Next.js', icon: <SiNextdotjs /> },
+    { name: 'Node.js', icon: <FaNodeJs /> },
+    { name: 'Spring Boot', icon: <SiSpringboot /> },
+    { name: 'Tailwind CSS', icon: <SiTailwindcss /> },
+    {
+      name: 'Flutter',
+      icon: <SiFlutter />,
+    },
+    { name: 'React Native', icon: <FaReact /> },
+    { name: 'Figma', icon: <FaFigma /> },
+    {name: 'AWS', icon: <FaAws/>}
   ],
 };
 
@@ -142,12 +160,17 @@ const Resume = () => {
                   <ul className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {experience.jobs.map((job, index) => {
                       return (
-                        <li key={index} className='bg-[#232329] h-44 py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1'>
-                          <span className='text-accent'>{job.date}</span>
-                          <h3 className='text-xl max-w-[260px] min-h-[60px] text-center lg:text-left'>{job.title}</h3>
-                          <div>
-                            <span className='w-[6px] h-[6px] rounded-full bg-accent'></span>
-                            <p className='text-white/60'>{job.company}</p>
+                        <li
+                          key={index}
+                          className="bg-[#232329] h-44 py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
+                        >
+                          <span className="text-accent">{job.date}</span>
+                          <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left">
+                            {job.title}
+                          </h3>
+                          <div className="flex items-center gap-3">
+                            <span className="w-[6px] h-[6px] inline-block rounded-full bg-accent"></span>
+                            <p className="text-white/60">{job.company}</p>
                           </div>
                         </li>
                       );
@@ -156,14 +179,90 @@ const Resume = () => {
                 </ScrollArea>
               </div>
             </TabsContent>
+
             <TabsContent value="education" className="w-full">
-              education
+              <div className="flex flex-col gap-8 text-center xl:text-left">
+                <h3 className="text-4xl font-bold">{education.title}</h3>
+                <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
+                  {education.description}
+                </p>
+                <ScrollArea className="h-[400px]">
+                  <ul className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    {education.schools.map((school, index) => {
+                      return (
+                        <li
+                          key={index}
+                          className="bg-[#232329] h-44 py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
+                        >
+                          <span className="text-accent">{school.duration}</span>
+                          <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left">
+                            {school.degree}
+                          </h3>
+                          <div className="flex items-center gap-3">
+                            <span className="w-[6px] h-[6px] inline-block rounded-full bg-accent"></span>
+                            <p className="text-white/60">
+                              {school.institution}
+                            </p>
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </ScrollArea>
+              </div>
             </TabsContent>
+
             <TabsContent value="skills" className="w-full">
-              skills
+              <div className="flex flex-col gap-8">
+                <div className="flex flex-col gap-8 text-center xl:text-left">
+                  <h3 className="text-4xl font-bold">{skills.title}</h3>
+                  <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
+                    {skills.description}
+                  </p>
+                </div>
+                <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-8">
+                  {skills.skillList.map((skill, index) => {
+                    return (
+                      <li key={index}>
+                        <TooltipProvider delayDuration={100}>
+                          <Tooltip>
+                            <TooltipTrigger className="w-full h-40 bg-[#232329] rounded-xl flex justify-center items-center group">
+                              <div className="text-6xl group-hover:text-accent transition-all duration-300">
+                                {skill.icon}
+                              </div>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p className="capitalize">{skill.name}</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
             </TabsContent>
+
             <TabsContent value="about" className="w-full">
-              about
+              <div className="flex flex-col gap-8">
+                <h3 className="text-4xl font-bold">{about.title}</h3>
+                <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
+                  {about.description}
+                </p>
+                <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6 max-w-[620px] mx-auto xl:mx-0">
+                  {about.info.map((item, index) => {
+                    return (
+                      <li
+                        key={index}
+                        className="flex items-center justify-center xl:justify-start gap-4"
+                      >
+                        <span className="text-white/60">{item.fieldName}</span>
+                        <span className="text-xl">{item.fieldValue}</span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
             </TabsContent>
           </div>
         </Tabs>
