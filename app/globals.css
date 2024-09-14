@@ -22,3 +22,15 @@
     -webkit-text-stroke: 1px #00d9ff;
   }
 }
+
+/* Global CSS */
+.blink {
+  animation: blink-animation 1s steps(2, start) infinite;
+}
+
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+
