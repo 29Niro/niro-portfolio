@@ -5,6 +5,7 @@ import { FiDownload } from 'react-icons/fi';
 import Social from '@/components/Social';
 import Profile from '@/components/Profile';
 import Stats from '@/components/Stats';
+import Link from 'next/link';
 
 const Home = () => {
   return (
@@ -25,14 +26,17 @@ const Home = () => {
             </p>
 
             <div className="flex flex-col gap-8 xl:flex-row items-center">
-              <Button
-                size="lg"
-                variant="outline"
-                className="uppercase flex items-center gap-2"
-              >
-                <FiDownload className="text-xl" />
-                Download CV
-              </Button>
+              <a href="/assets/NIROSHAN_PUSHPARAJ.pdf" download>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="uppercase flex items-center gap-2"
+                >
+                  <FiDownload className="text-xl" />
+                  Download CV
+                </Button>
+              </a>
+
               <div className="mb-8 xl:mb-0">
                 <Social
                   containerStyles="flex gap-6"
@@ -41,7 +45,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className='order-1 xl:order-none mb-8 xl:mb-0'>
+          <div className="order-1 xl:order-none mb-8 xl:mb-0">
             <Profile />
           </div>
         </div>
