@@ -7,6 +7,10 @@
     "build": "next build",
     "start": "next start",
     "prod_start": "NODE_ENV=production node server.js",
+    "start-dev": "env-cmd -f .env.development next dev",
+    "build-dev": "env-cmd -f .env.development next build",
+    "start-prod": "env-cmd -f .env.production next start",
+    "build-prod": "env-cmd -f .env.production next build",
     "lint": "next lint"
   },
   "dependencies": {
@@ -19,6 +23,8 @@
     "@radix-ui/react-tooltip": "^1.1.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "dotenv": "^16.4.5",
+    "emailjs-com": "^3.2.0",
     "framer-motion": "^11.5.4",
     "lucide-react": "^0.439.0",
     "next": "14.2.8",
