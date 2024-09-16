@@ -45,7 +45,7 @@ const MobileNavbar = () => {
         <div className="mt-32 mb-32 text-center text-2xl">
           <Link href="/">
             <h1 className="text-4xl font-semibold text-accent">
-              Niro<span className="text-white">.</span>
+              Niro<span className="text-white blink">_</span>
             </h1>
           </Link>
         </div>

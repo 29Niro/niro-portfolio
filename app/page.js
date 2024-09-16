@@ -5,7 +5,6 @@ import { FiDownload } from 'react-icons/fi';
 import Social from '@/components/Social';
 import Profile from '@/components/Profile';
 import Stats from '@/components/Stats';
-import Link from 'next/link';
 
 const Home = () => {
   return (

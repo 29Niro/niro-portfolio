@@ -27,6 +27,9 @@ const Stats = () => {
                   delay={2}
                   className="h2 text-4xl xl:text-6xl font-extrabold"
                 />
+                <h2 className="h2 text-4xl xl:text-6xl font-extrabold">
+                  +
+                </h2>
                 <p
                   className={`${
                     stat.title.length < 15 ? 'max-w-[100px]' : 'max-w-[150px]'
