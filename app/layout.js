@@ -20,13 +20,13 @@ export const metadata = {
     'Niroshan, software engineer, full-stack developer, web development, mobile app development, React, Flutter, Tailwind CSS, JavaScript, SEO, cloud computing, custom solutions',
   openGraph: {
     type: 'website',
-    url: 'http://niro-dev.com/',
+    url: 'https://niro-dev.com/',
     title: 'Niroshan | Full-Stack Software Engineer',
     description:
       'Specializing in full-stack web and mobile app development, delivering high-performance and scalable solutions.',
     images: [
       {
-        url: '/assets/og-image.png',
+        url: 'http://niro-dev.com/assets/og-image.png',
         height: 630,
         alt: 'Niroshan - Full-Stack Software Engineer',
       },
@@ -38,7 +38,7 @@ export const metadata = {
       'Specializing in full-stack web and mobile app development, delivering high-performance and scalable solutions.',
     images: [
       {
-        url: '/assets/og-image.png',
+        url: 'http://niro-dev.com/assets/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Niroshan - Full-Stack Software Engineer',
@@ -51,7 +51,7 @@ export const metadata = {
       'Specializing in full-stack web and mobile app development, delivering high-performance and scalable solutions.',
     images: [
       {
-        url: '/assets/og-image.png',
+        url: 'http://niro-dev.com/assets/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Niroshan - Full-Stack Software Engineer',
