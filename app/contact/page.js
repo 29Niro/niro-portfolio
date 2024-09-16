@@ -1,10 +1,10 @@
 'use client';
+
 import { useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-
 import {
   Select,
   SelectContent,
@@ -16,6 +16,9 @@ import {
 } from '@/components/ui/select';
 
 import { FaPhoneAlt, FaEnvelope, FaMapMarkedAlt } from 'react-icons/fa';
+
+import { motion } from 'framer-motion';
+import emailjs from 'emailjs-com'; 
 
 const info = [
   {
@@ -35,11 +38,9 @@ const info = [
   },
 ];
 
-import { motion } from 'framer-motion';
-
 const Contact = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
+    name: '',
     email: '',
     phone: '',
     subject: '',
@@ -47,51 +48,53 @@ const Contact = () => {
     message: '',
   });
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+    setIsError(false);
+    setIsSuccess(false);
 
-    console.log(process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID);
-
-    emailjs
-      .send(
+    try {
+      const response = await emailjs.send(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
         {
-          firstName: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          subject: formData.subject,
-          service: formData.service,
-          message: formData.message,
+          to_name: 'Niroshan', // or any recipient's name
+          from_name: 'Niro Portfolio Site', // Sender's name
+          name: formData.name, // Sender's name
+          subject: formData.subject, // Subject from the form
+          service: formData.service, // Selected service from the form
+          message: formData.message, // The message from the form
+          email: formData.email, // Sender's email
+          phone: formData.phone, // Sender's phone number
         },
         process.env.NEXT_PUBLIC_EMAILJS_USER_ID
-      )
-      .then(
-        (response) => {
-          console.log('Email successfully sent!', response);
-          alert('Message sent successfully!');
-        },
-        (error) => {
-          console.error('Error sending email:', error);
-          alert('Failed to send message.');
-        }
       );
-
-    sendEmail(e);
-
-    setFormData({
-      firstName: '',
-      email: '',
-      phone: '',
-      subject: '',
-      service: '',
-      message: '',
-    });
+      setIsSuccess(true);
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setIsError(true);
+    } finally {
+      setIsLoading(false);
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        subject: '',
+        service: '',
+        message: '',
+      });
+    }
   };
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -104,7 +107,10 @@ const Contact = () => {
       <div className="container mx-auto">
         <div className="flex flex-col xl:flex-row gap-8">
           <div className="xl:h-1/2 order-2 xl:order-none">
-            <form className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
+            <form
+              className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl"
+              onSubmit={sendEmail}
+            >
               <h3 className="text-4xl text-accent">Let&apos;s work together</h3>
               <p className="text-white/60">
                 Reach out to discuss your project, ask questions, or
@@ -154,10 +160,10 @@ const Contact = () => {
                 <SelectContent>
                   <SelectGroup>
                     <SelectLabel>Select a service</SelectLabel>
-                    <SelectItem value="wd">Web Development</SelectItem>
-                    <SelectItem value="md">Mobile App Development</SelectItem>
-                    <SelectItem value="ud">UI/UX Design</SelectItem>
-                    <SelectItem value="sd">SEO Services</SelectItem>
+                    <SelectItem value="web-development">Web Development</SelectItem>
+                    <SelectItem value="mobile-development">Mobile App Development</SelectItem>
+                    <SelectItem value="ui-design">UI/UX Design</SelectItem>
+                    <SelectItem value="seo-service">SEO Services</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>
@@ -171,8 +177,15 @@ const Contact = () => {
               />
 
               <Button type="submit" size="md" className="max-w-40">
-                Send Message
+                {isLoading ? 'Sending...' : 'Send Message'}
               </Button>
+
+              {isSuccess && (
+                <p className="text-green-500">Message sent successfully!</p>
+              )}
+              {isError && (
+                <p className="text-red-500">Failed to send message.</p>
+              )}
             </form>
           </div>
 
