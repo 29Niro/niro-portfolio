@@ -1,5 +1,6 @@
 import { JetBrains_Mono } from 'next/font/google';
 import './globals.css';
+import Script from 'next/script';
 
 // components
 import Header from '@/components/Header';
@@ -63,6 +64,18 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-RNGZK6KHHQ"
+        ></Script>
+        <Script id="google-analytics">
+          {`window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-RNGZK6KHHQ');`}
+        </Script>
+      </head>
       <body className={jetbrainsMono.variable}>
         <Header />
         <StairTransition />
