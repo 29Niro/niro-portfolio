@@ -41,51 +41,51 @@ const experience = {
   icon: FaHtml5,
   title: 'My Experience',
   description:
-    'I have worked on a variety of projects, ranging from small business websites to large-scale web applications. I have experience in both front-end and back-end development, and I am comfortable working with modern frameworks and libraries. I am always looking to expand my skill set and take on new challenges.',
+    'I have contributed to production-grade mobile and web applications across healthcare, ticketing, construction, property, and automation domains. My experience spans Flutter, React, Next.js, RESTful APIs, and cloud technologies, working in cross-functional engineering teams to deliver scalable, user-centric solutions.',
   jobs: [
     {
       title: 'Software Engineer',
       company: 'Yarl Ventures (Pvt) Ltd',
       date: 'Feb 2025 - Present',
       description:
-        'Developed and maintained the front-end of the company’s website using React, Next.js, and Tailwind CSS. Implemented new features and optimized performance to enhance the user experience.',
+        'Developing a comprehensive healthcare mobile platform enabling patients to discover doctors, book appointments, and access remote consultations. Built cross-platform applications using Flutter with native Android/iOS integrations. Implemented appointment workflows, multi-vendor diagnostics, performance optimizations, and mentored junior developers.'
     },
     {
-      title: 'Front-End Engineer (Part-Time)',
+      title: 'Frontend Engineer (Part-Time)',
       company: 'Keture',
       date: 'Oct 2025 - Present',
       description:
-        'Developed and maintained the front-end of the company’s website using React, Next.js, and Tailwind CSS. Implemented new features and optimized performance to enhance the user experience.',
+        'Enhancing and maintaining client-facing React and Next.js applications. Implementing new modules, optimizing UI/UX flows, and integrating RESTful APIs for real-time data-driven functionality.'
     },
     {
       title: 'Freelance Developer',
       company: 'Self-Employed',
       date: 'Apr 2024 - Present',
       description:
-        'Developed and maintained the front-end of the company’s website using React, Next.js, and Tailwind CSS. Implemented new features and optimized performance to enhance the user experience.',
+        'Delivering full-stack and mobile solutions for clients using React.js, Next.js, Flutter, Node.js, and Firebase. Projects include dashboards, e-commerce interfaces, internal company tools, and automation pipelines using n8n and cloud services.'
     },
     {
-      title: 'Front-End Engineer',
+      title: 'Frontend Engineer',
       company: 'Keture',
       date: 'Jun 2024 - Feb 2025',
       description:
-        'Developed and maintained the front-end of the company’s website using React, Next.js, and Tailwind CSS. Implemented new features and optimized performance to enhance the user experience.',
+        'Developed SaaS platforms including a real-time seat booking system, construction management system, and property listing CMS. Worked with React.js, Redux, Tailwind CSS, Flutter, and RESTful APIs to build scalable, high-performance UI components and admin panels.'
     },
     {
-      title: 'Front-End Developer',
+      title: 'Full Stack Developer (Intern)',
       company: 'Silverline IT',
       date: 'Dec 2023 - May 2024',
       description:
-        'Developed and maintained the front-end of the company’s website using React, Next.js, and Tailwind CSS. Implemented new features and optimized performance to enhance the user experience.',
+        'Built and maintained full-stack features using React.js, Firebase, and Express.js. Implemented RESTful APIs, optimized performance, and collaborated with cross-functional teams to deliver scalable product enhancements.'
     },
     {
-      title: 'Flutter Developer',
+      title: 'Trainee Mobile App Developer',
       company: 'DDS Techvira',
       date: 'Jan 2023 - Jul 2023',
       description:
-        'Built and maintained the back-end of the company’s web application using Node.js, Express, and MongoDB. Designed and implemented RESTful APIs to support the front-end functionality.',
-    },
-  ],
+        'Developed cross-platform Flutter applications with Bloc state management. Designed UI/UX with Figma and integrated Firebase for authentication and real-time backend services.'
+    }
+  ]
 };
 
 const education = {
@@ -135,7 +135,6 @@ const skills = {
 
     // Cloud & DevOps
     { name: 'AWS', icon: <FaAws /> },
-    { name: 'AWS Bedrock', icon: <FaAws /> },
     { name: 'Linux (Ubuntu)', icon: <FaLinux /> },
     { name: 'Git & GitHub', icon: <FaGitAlt /> },
     { name: 'Docker', icon: <FaDocker /> },
@@ -186,27 +185,34 @@ const Resume = () => {
                 <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
                   {experience.description}
                 </p>
-                <ScrollArea className="h-[400px]">
-                  <ul className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    {experience.jobs.map((job, index) => {
-                      return (
-                        <li
-                          key={index}
-                          className="bg-[#232329] h-44 py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
-                        >
-                          <span className="text-accent">{job.date}</span>
-                          <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left">
+                <div className="border-l-2 border-accent/20 ml-2 space-y-12 pb-2">
+                  {experience.jobs.map((job, index) => {
+                    return (
+                      <div key={index} className="relative pl-8 md:pl-12 group">
+                        {/* Timeline Dot */}
+                        <span
+                          className="absolute -left-[9px] top-0 h-[16px] w-[16px] rounded-full border-2 border-accent bg-[#1c1c22] group-hover:bg-accent transition-colors duration-300"
+                        ></span>
+
+                        <div className="flex flex-col gap-2">
+                          <span className="text-accent text-sm md:text-base font-semibold tracking-wide">
+                            {job.date}
+                          </span>
+                          <h3 className="text-xl max-w-[260px] min-h-[30px] lg:text-left font-bold leading-tight">
                             {job.title}
                           </h3>
-                          <div className="flex items-center gap-3">
-                            <span className="w-[6px] h-[6px] inline-block rounded-full bg-accent"></span>
-                            <p className="text-white/60">{job.company}</p>
+                          <div className="flex items-center gap-2 text-white/60 mb-2">
+                            <span className="w-[6px] h-[6px] rounded-full bg-accent"></span>
+                            <p className="text-sm">{job.company}</p>
                           </div>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </ScrollArea>
+                          <p className="text-white/80 text-sm leading-relaxed max-w-[90%]">
+                            {job.description}
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </TabsContent>
 
@@ -296,8 +302,8 @@ const Resume = () => {
             </TabsContent>
           </div>
         </Tabs>
-      </div>
-    </motion.div>
+      </div >
+    </motion.div >
   );
 };
 
