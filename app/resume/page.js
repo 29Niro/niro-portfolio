@@ -2,24 +2,25 @@
 
 import {
   FaHtml5,
-  FaCss3,
+  FaCss3Alt,
   FaJs,
   FaReact,
   FaNodeJs,
-  FaFigma,
-  FaJava,
-  FaPython,
-  FaAws
+  FaAws,
+  FaLinux,
+  FaGitAlt,
+  FaDocker,
 } from 'react-icons/fa';
 import {
   SiTailwindcss,
   SiNextdotjs,
   SiFlutter,
-  SiSpringboot,
-  SiC,
-  SiCsharp,
-  SiDotnet
+  SiExpress,
+  SiNginx,
+  SiN8N,
+  SiFigma,
 } from 'react-icons/si';
+import { MdCall } from 'react-icons/md';
 
 const about = {
   title: 'About Me',
@@ -43,6 +44,20 @@ const experience = {
     'I have worked on a variety of projects, ranging from small business websites to large-scale web applications. I have experience in both front-end and back-end development, and I am comfortable working with modern frameworks and libraries. I am always looking to expand my skill set and take on new challenges.',
   jobs: [
     {
+      title: 'Software Engineer',
+      company: 'Yarl Ventures (Pvt) Ltd',
+      date: 'Feb 2025 - Present',
+      description:
+        'Developed and maintained the front-end of the company’s website using React, Next.js, and Tailwind CSS. Implemented new features and optimized performance to enhance the user experience.',
+    },
+    {
+      title: 'Front-End Engineer (Part-Time)',
+      company: 'Keture',
+      date: 'Oct 2025 - Present',
+      description:
+        'Developed and maintained the front-end of the company’s website using React, Next.js, and Tailwind CSS. Implemented new features and optimized performance to enhance the user experience.',
+    },
+    {
       title: 'Freelance Developer',
       company: 'Self-Employed',
       date: 'Apr 2024 - Present',
@@ -52,7 +67,7 @@ const experience = {
     {
       title: 'Front-End Engineer',
       company: 'Keture',
-      date: 'Jun 2024 - Present',
+      date: 'Jun 2024 - Feb 2025',
       description:
         'Developed and maintained the front-end of the company’s website using React, Next.js, and Tailwind CSS. Implemented new features and optimized performance to enhance the user experience.',
     },
@@ -95,23 +110,38 @@ const education = {
 const skills = {
   title: 'My Skills',
   description:
-    'I have experience working with a variety of technologies and tools. Here are some of the key skills that I bring to the table:',
+    'I have experience working with a variety of modern technologies across mobile, web, backend, cloud, and automation. Here are some of the key skills I bring to the table:',
   skillList: [
+    // Frontend
     { name: 'HTML', icon: <FaHtml5 /> },
-    { name: 'CSS', icon: <FaCss3 /> },
+    { name: 'CSS', icon: <FaCss3Alt /> },
     { name: 'JavaScript', icon: <FaJs /> },
     { name: 'React JS', icon: <FaReact /> },
     { name: 'Next.js', icon: <SiNextdotjs /> },
-    { name: 'Node.js', icon: <FaNodeJs /> },
-    { name: 'Spring Boot', icon: <SiSpringboot /> },
     { name: 'Tailwind CSS', icon: <SiTailwindcss /> },
-    {
-      name: 'Flutter',
-      icon: <SiFlutter />,
-    },
+
+    // Mobile
+    { name: 'Flutter', icon: <SiFlutter /> },
     { name: 'React Native', icon: <FaReact /> },
-    { name: 'Figma', icon: <FaFigma /> },
-    {name: 'AWS', icon: <FaAws/>}
+
+    // Backend
+    { name: 'Node.js', icon: <FaNodeJs /> },
+    { name: 'Express.js', icon: <SiExpress /> },
+    { name: 'Nginx', icon: <SiNginx /> },
+
+    // Automation & Integrations
+    { name: 'n8n Automation', icon: <SiN8N /> },
+    { name: 'Twilio Voice & SMS', icon: <MdCall /> },
+
+    // Cloud & DevOps
+    { name: 'AWS', icon: <FaAws /> },
+    { name: 'AWS Bedrock', icon: <FaAws /> },
+    { name: 'Linux (Ubuntu)', icon: <FaLinux /> },
+    { name: 'Git & GitHub', icon: <FaGitAlt /> },
+    { name: 'Docker', icon: <FaDocker /> },
+
+    // UI/UX
+    { name: 'Figma', icon: <SiFigma /> }
   ],
 };
 
