@@ -28,7 +28,7 @@ Set these environment variables in Netlify (Site configuration → Environment v
 - `NEXT_PUBLIC_SANITY_PROJECT_ID`, `NEXT_PUBLIC_SANITY_DATASET`
 - `NEXT_PUBLIC_SITE_URL` (e.g. `https://niro-dev.com`)
 - `SANITY_REVALIDATE_SECRET` (any random string)
-- `NEXT_PUBLIC_EMAILJS_SERVICE_ID`, `NEXT_PUBLIC_EMAILJS_TEMPLATE_ID`, `NEXT_PUBLIC_EMAILJS_USER_ID`
+- `GMAIL_USER`, `GMAIL_APP_PASSWORD` (Google app password), optional `CONTACT_TO_EMAIL`: used by the contact form via `/api/contact`
 
 Content refreshes within 60 seconds on its own. For instant updates add a Sanity webhook
 (API → Webhooks): URL `https://<your-site>/api/revalidate`, the same secret, trigger on

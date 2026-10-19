@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import emailjs from 'emailjs-com';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -46,26 +45,21 @@ const ContactForm = ({ services = [], defaultService }) => {
 
     setStatus('loading');
     try {
-      await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-        {
-          to_name: 'Niroshan',
-          from_name: 'Niro Portfolio Site',
-          name: formData.name,
-          subject: formData.subject,
-          service,
-          message: formData.message,
-          email: formData.email,
-          phone: formData.phone,
-        },
-        process.env.NEXT_PUBLIC_EMAILJS_USER_ID
-      );
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData, service }),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || 'Request failed');
+      }
       setStatus('success');
       setFormData(empty);
       setService('');
     } catch (err) {
-      console.error('Error sending email:', err);
+      console.error('Error sending message:', err);
+      setError(err.message === 'Request failed' ? '' : err.message);
       setStatus('error'); // keep the typed message so nothing is lost
     }
   };
@@ -130,7 +124,7 @@ const ContactForm = ({ services = [], defaultService }) => {
       <div aria-live="polite">
         {error && <p className="text-red-400">{error}</p>}
         {status === 'success' && <p className="text-green-500">Message sent successfully!</p>}
-        {status === 'error' && (
+        {status === 'error' && !error && (
           <p className="text-red-400">Failed to send message. Please try again or email me directly.</p>
         )}
       </div>
