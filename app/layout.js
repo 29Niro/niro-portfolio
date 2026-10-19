@@ -1,65 +1,42 @@
 import { JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import Script from 'next/script';
-
-// components
-import Header from '@/components/Header';
-import PageTransition from '@/components/PageTransition';
-import StairTransition from '@/components/StairTransition';
+import { getSettings } from '@/lib/content';
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
-  weights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
   variable: '--font-jetbrainsMono',
 });
 
-export const metadata = {
-  title: 'Niroshan | Full-Stack Software Engineer | Web & Mobile Solutions',
-  description:
-    'Niroshan is a full-stack software engineer specializing in web and mobile application development, offering tailored solutions for businesses with a focus on performance, scalability, and mobile responsiveness.',
-  keywords:
-    'Niroshan, software engineer, full-stack developer, web development, mobile app development, React, Flutter, Tailwind CSS, JavaScript, SEO, cloud computing, custom solutions',
-  openGraph: {
-    type: 'website',
-    url: 'https://niro-dev.com/',
-    title: 'Niroshan | Full-Stack Software Engineer',
-    description:
-      'Specializing in full-stack web and mobile app development, delivering high-performance and scalable solutions.',
-    images: [
-      {
-        url: 'http://niro-dev.com/assets/og-image.png',
-        height: 630,
-        alt: 'Niroshan - Full-Stack Software Engineer',
-      },
-    ],
-  },
-  LinkedIn: {
-    title: 'Niroshan | Full-Stack Software Engineer',
-    description:
-      'Specializing in full-stack web and mobile app development, delivering high-performance and scalable solutions.',
-    images: [
-      {
-        url: 'http://niro-dev.com/assets/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Niroshan - Full-Stack Software Engineer',
-      },
-    ],
-  },
-  Facebook: {
-    title: 'Niroshan | Full-Stack Software Engineer',
-    description:
-      'Specializing in full-stack web and mobile app development, delivering high-performance and scalable solutions.',
-    images: [
-      {
-        url: 'http://niro-dev.com/assets/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Niroshan - Full-Stack Software Engineer',
-      },
-    ],
-  },
-};
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://niro-dev.com';
+
+export async function generateMetadata() {
+  const s = await getSettings();
+  const og = s.ogImage?.startsWith('http') ? s.ogImage : `${SITE_URL}${s.ogImage || '/assets/og-image.png'}`;
+  return {
+    metadataBase: new URL(SITE_URL),
+    title: { default: s.seoTitle, template: `%s | ${s.name}` },
+    description: s.seoDescription,
+    keywords:
+      'Niroshan, software engineer, full-stack developer, web development, mobile app development, React, Next.js, Flutter, Tailwind CSS, Sri Lanka',
+    alternates: { canonical: '/' },
+    openGraph: {
+      type: 'website',
+      url: SITE_URL,
+      siteName: s.name,
+      title: s.seoTitle,
+      description: s.seoDescription,
+      images: [{ url: og, width: 1200, height: 630, alt: `${s.name} - ${s.role}` }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: s.seoTitle,
+      description: s.seoDescription,
+      images: [og],
+    },
+  };
+}
 
 export default function RootLayout({ children }) {
   return (
@@ -68,19 +45,16 @@ export default function RootLayout({ children }) {
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-RNGZK6KHHQ"
-        ></Script>
-        <Script id="google-analytics">
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
           {`window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', 'G-RNGZK6KHHQ');`}
         </Script>
       </head>
-      <body className={jetbrainsMono.variable}>
-        <Header />
-        <StairTransition />
-        <PageTransition>{children}</PageTransition>
-      </body>
+      <body className={jetbrainsMono.variable}>{children}</body>
     </html>
   );
 }

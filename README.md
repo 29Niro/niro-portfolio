@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Niro Portfolio
 
-## Getting Started
+Next.js 15 (App Router) + Tailwind + Sanity CMS. Deployed on Netlify.
 
-First, run the development server:
+All content (profile, projects, experience, education, skills, services, blog posts) is
+edited in Sanity Studio at `/studio`. If Sanity is not configured, the site falls back to
+`data/seed.js`, so it always renders.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## One-time CMS setup
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Create a free project at <https://www.sanity.io/manage> (dataset: `production`).
+2. Copy `.env.example` to `.env.local` and set `NEXT_PUBLIC_SANITY_PROJECT_ID`.
+3. In the Sanity project: **API → Tokens → Add token** with *Editor* rights, and put it in
+   `SANITY_API_WRITE_TOKEN` (local only, never commit it).
+4. **API → CORS origins**: add `http://localhost:3000` and your production URL, with credentials allowed.
+5. Import the existing content (profile, projects, experience, ...) once:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+   ```bash
+   npm run seed
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+6. `npm run dev`, then open <http://localhost:3000/studio> and sign in.
 
-## Learn More
+## Netlify
 
-To learn more about Next.js, take a look at the following resources:
+Set these environment variables in Netlify (Site configuration → Environment variables):
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `NEXT_PUBLIC_SANITY_PROJECT_ID`, `NEXT_PUBLIC_SANITY_DATASET`
+- `NEXT_PUBLIC_SITE_URL` (e.g. `https://niro-dev.com`)
+- `SANITY_REVALIDATE_SECRET` (any random string)
+- `NEXT_PUBLIC_EMAILJS_SERVICE_ID`, `NEXT_PUBLIC_EMAILJS_TEMPLATE_ID`, `NEXT_PUBLIC_EMAILJS_USER_ID`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Content refreshes within 60 seconds on its own. For instant updates add a Sanity webhook
+(API → Webhooks): URL `https://<your-site>/api/revalidate`, the same secret, trigger on
+create/update/delete, projection `{_type}`.
 
-## Deploy on Vercel
+Also add your production URL under CORS origins so `/studio` works there.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Scripts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- `npm run dev`, `npm run build`, `npm start`
+- `npm run seed`: import `data/seed.js` into Sanity (safe to re-run; it overwrites those documents)

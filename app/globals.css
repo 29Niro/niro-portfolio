@@ -5,6 +5,12 @@
 @layer base {
   body {
     @apply font-primary bg-primary text-white leading-loose;
+    background-image: radial-gradient(60rem 30rem at 85% -10%, rgba(0, 217, 255, 0.08), transparent 60%);
+    background-attachment: fixed;
+  }
+  :focus-visible {
+    outline: 2px solid #00d9ff;
+    outline-offset: 2px;
   }
   .h1 {
     @apply text-[48px] xl:text-[80px] leading-[1.1] font-semibold;
@@ -34,3 +40,37 @@
   }
 }
 
+
+.card {
+  @apply rounded-2xl border border-white/10 bg-white/[0.03] transition-all duration-300 hover:border-accent/40 hover:bg-white/[0.06];
+}
+
+.marquee {
+  animation: marquee 40s linear infinite;
+}
+.marquee:hover {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.fade-up {
+  animation: fade-up 0.5s ease-out both;
+}
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee,
+  .fade-up,
+  .blink {
+    animation: none;
+  }
+}

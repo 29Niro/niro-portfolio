@@ -1,33 +1,30 @@
-import Link from 'next/link';
+import { FaGithub, FaLinkedin, FaYoutube, FaTwitter, FaInstagram, FaLink } from 'react-icons/fa';
 
-import { FaGithub, FaLinkedin, FaYoutube } from 'react-icons/fa';
+const iconFor = {
+  github: FaGithub,
+  linkedin: FaLinkedin,
+  youtube: FaYoutube,
+  twitter: FaTwitter,
+  x: FaTwitter,
+  instagram: FaInstagram,
+};
 
-const socials = [
-  {
-    name: 'GitHub',
-    url: 'https://github.com/29Niro',
-    icon: <FaGithub />,
-  },
-  {
-    name: 'LinkedIn',
-    url: 'https://www.linkedin.com/in/niroshan-pushparaj/',
-    icon: <FaLinkedin />,
-  },
-  {
-    name: 'YouTube',
-    url: 'https://www.youtube.com/@TechKeyTamil-k4i',
-    icon: <FaYoutube />,
-  },
-];
-
-const Social = ({ containerStyles, iconStyles }) => {
+const Social = ({ socials = [], containerStyles, iconStyles }) => {
   return (
     <div className={containerStyles}>
-      {socials.map((social, index) => {
+      {socials.map((social) => {
+        const Icon = iconFor[social.name?.toLowerCase()] || FaLink;
         return (
-          <Link key={index} href={social.url} className={iconStyles}>
-            {social.icon}
-          </Link>
+          <a
+            key={social.url}
+            href={social.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={social.name}
+            className={iconStyles}
+          >
+            <Icon />
+          </a>
         );
       })}
     </div>

@@ -1,63 +1,39 @@
 'use client';
 
-import { Sheet, SheetContent, SheetTrigger } from './ui/sheet';
-import { usePathname, useRouter } from 'next/navigation'; // useRouter added
-import { useEffect, useState } from 'react'; // useState, useEffect added
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from './ui/sheet';
+import { usePathname } from 'next/navigation';
+import { useState } from 'react';
 import Link from 'next/link';
 import { CiMenuFries } from 'react-icons/ci';
-
-const links = [
-  { path: '/', label: 'Home' },
-  { path: '/services', label: 'Services' },
-  { path: '/resume', label: 'Resume' },
-  { path: '/work', label: 'Work' },
-  { path: '/contact', label: 'Contact' },
-];
+import { links, isActive } from './Navbar';
 
 const MobileNavbar = () => {
   const pathname = usePathname();
-  const router = useRouter(); // Get router instance
-  const [isOpen, setIsOpen] = useState(false); // Track the state of the sheet
-
-  useEffect(() => {
-    // Close the drawer when the route changes
-    const handleRouteChange = () => {
-      setIsOpen(false);
-    };
-
-    router.events?.on('routeChangeComplete', handleRouteChange); // Listen for route changes
-
-    // Cleanup the event listener
-    return () => {
-      router.events?.off('routeChangeComplete', handleRouteChange);
-    };
-  }, [router]);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
-      <SheetTrigger
-        onClick={() => setIsOpen(!isOpen)} // Toggle sheet state
-        className="flex justify-center items-center"
-      >
+      <SheetTrigger aria-label="Open menu" className="flex justify-center items-center">
         <CiMenuFries className="text-3xl text-accent" />
       </SheetTrigger>
       <SheetContent>
+        <SheetTitle className="sr-only">Navigation</SheetTitle>
         <div className="mt-32 mb-32 text-center text-2xl">
-          <Link href="/">
-            <h1 className="text-4xl font-semibold text-accent">
+          <Link href="/" onClick={() => setIsOpen(false)}>
+            <span className="text-4xl font-semibold text-accent">
               Niro<span className="text-white blink">_</span>
-            </h1>
+            </span>
           </Link>
         </div>
-        <nav className="flex flex-col justify-center items-start gap-8">
-          {links.map((link, index) => (
+        <nav className="flex flex-col justify-center items-start gap-8" aria-label="Mobile">
+          {links.map((link) => (
             <Link
-              key={index}
+              key={link.path}
               href={link.path}
               className={`${
-                link.path === pathname && 'text-accent border-b-2 border-accent'
+                isActive(link.path, pathname) ? 'text-accent border-b-2 border-accent' : ''
               } text-xl capitalize hover:text-accent transition-all`}
-              onClick={() => setIsOpen(false)} // Close the sheet when a link is clicked
+              onClick={() => setIsOpen(false)}
             >
               {link.label}
             </Link>
