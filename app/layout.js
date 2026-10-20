@@ -38,7 +38,19 @@ export async function generateMetadata() {
   };
 }
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const s = await getSettings();
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Niroshan Pushparaj',
+    url: SITE_URL,
+    jobTitle: s.role,
+    description: s.seoDescription,
+    email: s.email ? `mailto:${s.email}` : undefined,
+    address: s.address ? { '@type': 'PostalAddress', addressLocality: s.address } : undefined,
+    sameAs: s.socials?.map((x) => x.url),
+  };
   return (
     <html lang="en">
       <head>
@@ -54,7 +66,13 @@ export default function RootLayout({ children }) {
           gtag('config', 'G-RNGZK6KHHQ');`}
         </Script>
       </head>
-      <body className={jetbrainsMono.variable}>{children}</body>
+      <body className={jetbrainsMono.variable}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
+        />
+        {children}
+      </body>
     </html>
   );
 }
