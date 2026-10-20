@@ -4,6 +4,7 @@
 [build.environment]
   NODE_VERSION = "22"
   NPM_FLAGS = "--legacy-peer-deps"
-  # These are public by design (NEXT_PUBLIC_* values are bundled into the site),
-  # so Netlify's secrets scanner must not fail the build on them.
-  SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_SANITY_PROJECT_ID,NEXT_PUBLIC_SANITY_DATASET,NEXT_PUBLIC_SITE_URL"
+  # Public by design: NEXT_PUBLIC_* values are bundled into the site, and
+  # CONTACT_TO_EMAIL is the public address already shown on the site and CV,
+  # so Netlify secrets scanner must not fail the build on them.
+  SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_SANITY_PROJECT_ID,NEXT_PUBLIC_SANITY_DATASET,NEXT_PUBLIC_SITE_URL,CONTACT_TO_EMAIL"
