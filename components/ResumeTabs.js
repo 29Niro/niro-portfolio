@@ -47,7 +47,27 @@ const ResumeTabs = ({ settings, experience, education, skills }) => {
                           <span className="w-[6px] h-[6px] rounded-full bg-accent" />
                           <p className="text-sm">{job.company}</p>
                         </div>
-                        <p className="text-white/80 text-sm leading-relaxed max-w-[90%]">{job.description}</p>
+                        {job.highlights?.length > 0 ? (
+                          <ul className="list-disc pl-5 space-y-2 text-white/80 text-sm leading-relaxed max-w-[90%]">
+                            {job.highlights.map((point) => (
+                              <li key={point}>{point}</li>
+                            ))}
+                          </ul>
+                        ) : (
+                          <p className="text-white/80 text-sm leading-relaxed max-w-[90%]">{job.description}</p>
+                        )}
+                        {job.technologies?.length > 0 && (
+                          <ul className="mt-2 flex flex-wrap gap-2" aria-label="Technologies">
+                            {job.technologies.map((tech) => (
+                              <li
+                                key={tech}
+                                className="rounded-full border border-accent/30 px-3 py-0.5 text-xs text-accent"
+                              >
+                                {tech}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
                       </div>
                     </div>
                   ))}
@@ -66,7 +86,10 @@ const ResumeTabs = ({ settings, experience, education, skills }) => {
                         key={school.degree}
                         className="bg-[#232329] min-h-44 py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
                       >
-                        <span className="text-accent">{school.duration}</span>
+                        <span className="text-accent">
+                          {school.duration}
+                          {school.grade ? ` · ${school.grade}` : ''}
+                        </span>
                         <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left">{school.degree}</h3>
                         <div className="flex items-center gap-3">
                           <span className="w-[6px] h-[6px] inline-block rounded-full bg-accent" />

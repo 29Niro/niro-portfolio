@@ -4,17 +4,17 @@
 export const siteSettings = {
   name: 'Niroshan',
   role: 'Software Engineer',
-  rotatingRoles: ['Full-Stack Developer', 'Flutter Developer', 'React & Next.js Engineer', 'UI/UX Enthusiast'],
+  rotatingRoles: ['Full-Stack Developer', 'Voice AI & SaaS Engineer', 'React & Next.js Engineer', 'Flutter Developer', 'Java & Spring Boot'],
   heroIntro:
-    "I'm a software engineer based in Sri Lanka. I specialize in building exceptional digital experiences across web and mobile, from healthcare platforms to SaaS products.",
+    "I'm a full-stack software engineer based in Sri Lanka with 3 years of experience. I build scalable web and mobile products, from healthcare platforms to Voice AI SaaS, with React, Next.js, Node.js, Flutter and a growing Java and Spring Boot backend focus.",
   availability: 'Available for freelance work',
   profileImage: '/assets/profile.png',
   cv: '/assets/NIROSHAN_PUSHPARAJ.pdf',
   stats: [
-    { title: 'Years of Experience', count: 2 },
+    { title: 'Years of Experience', count: 3 },
     { title: 'Projects completed', count: 6 },
-    { title: 'Code commits', count: 212 },
-    { title: 'Technologies', count: 8 },
+    { title: 'Companies worked with', count: 5 },
+    { title: 'Technologies', count: 20 },
   ],
   email: '29niro@gmail.com',
   phone: '+94 775 139 934',
@@ -26,25 +26,26 @@ export const siteSettings = {
   ],
   aboutTitle: 'About Me',
   aboutDescription:
-    'I am a full-stack developer with a passion for building high-quality web and mobile applications. I specialize in React, Next.js, and Flutter, and I have experience working with Node.js, Express, and MongoDB. I also have a background in UI/UX design, which allows me to create visually appealing and user-friendly interfaces. I am committed to delivering exceptional results and providing value to my clients.',
+    'Full-Stack Software Engineer with 3 years of experience building scalable web applications using React.js, Node.js, and RESTful/microservices architectures, backed by relational database design in MySQL and PostgreSQL. I am actively expanding my backend expertise in Java and Spring Boot through hands-on project work, with a strong foundation in clean code, CI/CD automation, and Agile collaboration.',
   aboutInfo: [
     { fieldName: 'Name', fieldValue: 'Niroshan Pushparaj' },
     { fieldName: 'Phone', fieldValue: '(+94) 775 139 934' },
-    { fieldName: 'Experience', fieldValue: '2+ Years' },
+    { fieldName: 'Experience', fieldValue: '3+ Years' },
     { fieldName: 'Nationality', fieldValue: 'Sri Lankan' },
     { fieldName: 'Email', fieldValue: '29niro@gmail.com' },
     { fieldName: 'Freelance', fieldValue: 'Available' },
     { fieldName: 'Languages', fieldValue: 'Tamil, English' },
+    { fieldName: 'Current role', fieldValue: 'Software Engineer, AIVOX' },
   ],
   experienceIntro:
-    'I have contributed to production-grade mobile and web applications across healthcare, ticketing, construction, property, and automation domains. My experience spans Flutter, React, Next.js, RESTful APIs, and cloud technologies, working in cross-functional engineering teams to deliver scalable, user-centric solutions.',
+    'I have shipped production software across Voice AI, healthcare, ticketing, construction and property domains. My work spans Next.js, React, Flutter, Node.js and Spring Boot, plus the integrations that tie products together: Stripe billing, Twilio and Vapi voice, real-time video, and n8n automation.',
   educationIntro:
-    'I hold a degree in "BSc (Hons) in Software Engineering" from University of Kelaniya, where I gained a strong foundation in software engineering principles and hands-on experience in developing innovative applications. My academic journey equipped me with technical expertise in full-stack development, mobile applications, and cloud-based solutions, all of which I apply in my professional projects.',
+    'I hold a B.Sc. (Hons) in Software Engineering from the University of Kelaniya (GPA 3.38 / 4.00), where I built a strong foundation in software engineering principles, full-stack development, mobile applications, and cloud-based solutions that I apply in my professional projects.',
   skillsIntro:
     'I have experience working with a variety of modern technologies across mobile, web, backend, cloud, and automation. Here are some of the key skills I bring to the table:',
-  seoTitle: 'Niroshan | Full-Stack Software Engineer | Web & Mobile Solutions',
+  seoTitle: 'Niroshan Pushparaj | Full-Stack Software Engineer | Next.js, Java, Flutter',
   seoDescription:
-    'Niroshan is a full-stack software engineer specializing in web and mobile application development, offering tailored solutions for businesses with a focus on performance, scalability, and mobile responsiveness.',
+    'Niroshan Pushparaj is a full-stack software engineer (3 years) building scalable web, mobile and Voice AI products with React, Next.js, Node.js, Flutter, Java and Spring Boot.',
   ogImage: '/assets/og-image.png',
 };
 
@@ -96,71 +97,115 @@ export const projects = [
 export const experience = [
   {
     title: 'Software Engineer',
-    company: 'Yarl Ventures (Pvt) Ltd',
-    date: 'Feb 2025 - Present',
-    description:
-      'Developing a comprehensive healthcare mobile platform enabling patients to discover doctors, book appointments, and access remote consultations. Built cross-platform applications using Flutter with native Android/iOS integrations. Implemented appointment workflows, multi-vendor diagnostics, performance optimizations, and mentored junior developers.',
+    company: 'AIVOX, Australia (Remote)',
+    date: 'May 2026 - Present',
+    highlights: [
+      'Building AIVOX, a Voice AI agent SaaS platform that answers, qualifies, and books calls 24/7 for small and medium businesses across trades, clinics, and professional services.',
+      'Developed customer and admin dashboards with Next.js and Supabase for agent setup, call logs, and account management, with Stripe-powered subscription billing across multiple pricing tiers.',
+      'Integrated Vapi and Twilio to configure inbound and outbound voice agents, tuning speech-to-text, LLM, and text-to-speech settings for natural, low-latency conversations.',
+      'Automated outbound calling campaigns and email follow-up sequences with n8n workflows.',
+    ],
+    technologies: ['Next.js', 'TypeScript', 'Supabase', 'Stripe', 'Vapi', 'Twilio', 'n8n', 'Netlify'],
+  },
+  {
+    title: 'Software Engineer',
+    company: 'Yarl Ventures, Sri Lanka',
+    date: 'Feb 2025 - Apr 2026',
+    highlights: [
+      'Architected and developed "Mediman," a comprehensive healthcare platform using Flutter, ensuring a seamless cross-platform experience for patients and doctors.',
+      'Managed the complete release lifecycle, publishing regular updates to both the Google Play Store and Apple App Store, and implemented CI/CD pipelines with automated testing to catch regressions before release.',
+      'Integrated complex third-party SDKs (Video Call SDK) and real-time communication for digital consultations.',
+      'Conducted code reviews, mentored junior developers on clean code and architectural patterns, and took part in Agile sprint planning.',
+    ],
+    technologies: ['Flutter', 'Kotlin', 'Swift', 'GetX', 'Firebase', 'Spring Boot', 'RESTful APIs', 'MySQL'],
   },
   {
     title: 'Frontend Engineer (Part-Time)',
     company: 'Keture',
     date: 'Oct 2025 - Present',
-    description:
-      'Enhancing and maintaining client-facing React and Next.js applications. Implementing new modules, optimizing UI/UX flows, and integrating RESTful APIs for real-time data-driven functionality.',
+    highlights: [
+      'Enhancing and maintaining client-facing React and Next.js applications.',
+      'Implementing new modules, optimizing UI/UX flows, and integrating RESTful APIs for real-time data-driven functionality.',
+    ],
+    technologies: ['React.js', 'Next.js', 'RESTful APIs'],
   },
   {
     title: 'Freelance Developer',
     company: 'Self-Employed',
     date: 'Apr 2024 - Present',
-    description:
-      'Delivering full-stack and mobile solutions for clients using React.js, Next.js, Flutter, Node.js, and Firebase. Projects include dashboards, e-commerce interfaces, internal company tools, and automation pipelines using n8n and cloud services.',
+    highlights: [
+      'Delivering full-stack and mobile solutions for clients using React.js, Next.js, Flutter, Node.js, and Firebase.',
+      'Projects include dashboards, e-commerce interfaces, internal company tools, and automation pipelines using n8n and cloud services.',
+    ],
+    technologies: ['React.js', 'Next.js', 'Flutter', 'Node.js', 'Firebase', 'n8n'],
   },
   {
     title: 'Frontend Engineer',
-    company: 'Keture',
+    company: 'Keture, Sri Lanka',
     date: 'Jun 2024 - Feb 2025',
-    description:
-      'Developed SaaS platforms including a real-time seat booking system, construction management system, and property listing CMS. Worked with React.js, Redux, Tailwind CSS, Flutter, and RESTful APIs to build scalable, high-performance UI components and admin panels.',
+    highlights: [
+      'Built and shipped three client-facing products end-to-end: a real-time seat booking platform (Empty Seat LK), a construction management system with automated workflows, and a property listing CMS with an admin panel (Deal Partner).',
+      'Designed scalable, responsive user and admin interfaces, and integrated RESTful APIs for real-time and seamless data handling across all three platforms.',
+    ],
+    technologies: ['Flutter', 'GetX', 'React.js', 'Redux', 'Tailwind CSS'],
   },
   {
-    title: 'Full Stack Developer (Intern)',
-    company: 'Silverline IT',
-    date: 'Dec 2023 - May 2024',
-    description:
-      'Built and maintained full-stack features using React.js, Firebase, and Express.js. Implemented RESTful APIs, optimized performance, and collaborated with cross-functional teams to deliver scalable product enhancements.',
+    title: 'Intern Full Stack Developer',
+    company: 'Silverline IT, Sri Lanka',
+    date: 'Dec 2023 - Jun 2024',
+    highlights: [
+      'Developed and maintained full-stack applications using React.js and Firebase, ensuring seamless frontend-backend integration.',
+      'Designed and implemented RESTful APIs using Express.js to enhance data communication and functionality.',
+      'Collaborated with team members to troubleshoot issues, optimize performance, and deliver scalable solutions.',
+    ],
+    technologies: ['React.js', 'Firebase', 'Express.js', 'RESTful APIs'],
   },
   {
     title: 'Trainee Mobile App Developer',
-    company: 'DDS Techvira',
+    company: 'DDS Techvira, Sri Lanka',
     date: 'Jan 2023 - Jul 2023',
-    description:
-      'Developed cross-platform Flutter applications with Bloc state management. Designed UI/UX with Figma and integrated Firebase for authentication and real-time backend services.',
+    highlights: [
+      'Developed cross-platform mobile applications using Flutter, focusing on intuitive UI/UX with Figma.',
+      'Implemented state management using the Bloc pattern for scalable, maintainable app architecture.',
+      'Integrated Firebase for auth and real-time data while collaborating with the team to resolve issues.',
+    ],
+    technologies: ['Flutter', 'Firebase', 'Bloc', 'Figma'],
   },
 ].map((e, i) => ({ ...e, order: i + 1 }));
 
 export const education = [
-  { institution: 'University of Kelaniya', degree: 'BSc (Hons) in Software Engineering', duration: 'Feb 2020 - Apr 2024' },
+  { institution: 'University of Kelaniya, Sri Lanka', degree: 'B.Sc. (Hons) in Software Engineering', duration: '2020 - 2024', grade: 'GPA 3.38 / 4.00' },
   { institution: 'V/Vavuniya Tamil M.M.V', degree: 'Advanced Level', duration: 'Jan 2017 - Dec 2018' },
 ].map((e, i) => ({ ...e, order: i + 1 }));
 
 export const skills = [
-  { name: 'HTML', icon: 'html', group: 'Frontend' },
-  { name: 'CSS', icon: 'css', group: 'Frontend' },
-  { name: 'JavaScript', icon: 'js', group: 'Frontend' },
+  { name: 'Java', icon: 'java', group: 'Languages' },
+  { name: 'JavaScript', icon: 'js', group: 'Languages' },
+  { name: 'TypeScript', icon: 'typescript', group: 'Languages' },
+  { name: 'Dart', icon: 'dart', group: 'Languages' },
   { name: 'React JS', icon: 'react', group: 'Frontend' },
   { name: 'Next.js', icon: 'next', group: 'Frontend' },
   { name: 'Tailwind CSS', icon: 'tailwind', group: 'Frontend' },
-  { name: 'Flutter', icon: 'flutter', group: 'Mobile' },
-  { name: 'React Native', icon: 'react', group: 'Mobile' },
+  { name: 'HTML', icon: 'html', group: 'Frontend' },
+  { name: 'CSS', icon: 'css', group: 'Frontend' },
+  { name: 'Spring Boot', icon: 'spring', group: 'Backend' },
   { name: 'Node.js', icon: 'node', group: 'Backend' },
   { name: 'Express.js', icon: 'express', group: 'Backend' },
   { name: 'Nginx', icon: 'nginx', group: 'Backend' },
+  { name: 'MySQL', icon: 'mysql', group: 'Databases' },
+  { name: 'PostgreSQL', icon: 'postgres', group: 'Databases' },
+  { name: 'MongoDB', icon: 'mongodb', group: 'Databases' },
+  { name: 'Supabase', icon: 'supabase', group: 'Databases' },
+  { name: 'Firebase', icon: 'firebase', group: 'Databases' },
+  { name: 'Flutter', icon: 'flutter', group: 'Mobile' },
+  { name: 'React Native', icon: 'react', group: 'Mobile' },
+  { name: 'Stripe', icon: 'stripe', group: 'Automation' },
   { name: 'n8n Automation', icon: 'n8n', group: 'Automation' },
   { name: 'Twilio Voice & SMS', icon: 'twilio', group: 'Automation' },
   { name: 'AWS', icon: 'aws', group: 'Cloud & DevOps' },
-  { name: 'Linux (Ubuntu)', icon: 'linux', group: 'Cloud & DevOps' },
-  { name: 'Git & GitHub', icon: 'git', group: 'Cloud & DevOps' },
   { name: 'Docker', icon: 'docker', group: 'Cloud & DevOps' },
+  { name: 'Git & GitHub', icon: 'git', group: 'Cloud & DevOps' },
+  { name: 'Linux (Ubuntu)', icon: 'linux', group: 'Cloud & DevOps' },
   { name: 'Figma', icon: 'figma', group: 'Design' },
 ].map((s, i) => ({ ...s, order: i + 1 }));
 
@@ -176,6 +221,12 @@ export const services = [
     value: 'mobile-development',
     description:
       'I create high-performance mobile applications using Flutter, delivering seamless experiences on both Android and iOS. I also offer expertise in React Native for cross-platform solutions.',
+  },
+  {
+    title: 'Voice AI & Automation',
+    value: 'ai-automation',
+    description:
+      'I build Voice AI agents and automation workflows with Vapi, Twilio and n8n that answer calls, qualify leads, book appointments and run follow-ups around the clock.',
   },
   {
     title: 'UI/UX Design',
